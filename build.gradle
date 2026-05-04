@@ -1,0 +1,137 @@
+plugins {
+    id 'java'
+    id 'com.diffplug.spotless' version '6.25.0'
+}
+
+group = 'com.velitask'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compileOnly 'com.github.velitask:velitask-sdk:1.0.+'
+
+    // org.json is bundled inside the velitask-sdk fat-jar at runtime,
+    // but compileOnly is required to resolve org.json.* imports at compile time.
+    compileOnly 'org.json:json:20250107'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+compileJava { options.encoding = 'UTF-8' }
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+jar {
+    archiveBaseName = 'velitask-official-indicators'
+    archiveVersion = project.version
+
+    manifest {
+        attributes(
+            'Velitask-Plugin-Class': 'com.velitask.plugin.official.VelitaskPlagin',
+            'Velitask-Plugin-Localization': 'strings/strings'
+        )
+    }
+}
+
+tasks.register('checkLocalization') {
+    group = 'verification'
+    description = 'Verifies that localized(...) keys match .properties files'
+
+    doLast {
+        def srcDir   = file('src/main/java')
+        def propsDir = file('src/main/resources/strings')
+        def locale   = 'ru'
+
+        def usedKeys = [] as LinkedHashSet
+        fileTree(srcDir).matching { include '**/*.java' }.each { javaFile ->
+            javaFile.text.findAll(/localized\(\s*"([^"]+)"\s*\)/) { match, key ->
+                usedKeys << key
+            }
+        }
+
+        def loadKeys = { File file ->
+            if (!file.exists()) return [] as Set
+            def props = new Properties()
+            file.withReader('UTF-8') { props.load(it) }
+            props.stringPropertyNames()
+        }
+
+        def defaultKeys = loadKeys(new File(propsDir, 'strings.properties'))
+        def localeKeys  = loadKeys(new File(propsDir, "strings_${locale}.properties"))
+
+        def missingDefault = usedKeys.findAll { !defaultKeys.contains(it) }
+        def missingLocale  = usedKeys.findAll { !localeKeys.contains(it) }
+        def unusedDefault  = defaultKeys.findAll { !usedKeys.contains(it) }
+        def unusedLocale   = localeKeys.findAll { !usedKeys.contains(it) }
+
+        def errors = 0
+        if (missingDefault) {
+            missingDefault.each {
+                logger.error("  [MISSING] '{}' — used in code, missing in strings.properties", it)
+                errors++
+            }
+        }
+        if (missingLocale) {
+            missingLocale.each {
+                logger.warn("  [MISSING] '{}' — used in code, missing in strings_${locale}.properties", it)
+            }
+        }
+        if (unusedDefault) {
+            unusedDefault.each {
+                logger.warn("  [UNUSED]  '{}' — declared in strings.properties, not used in code", it)
+            }
+        }
+        if (unusedLocale) {
+            unusedLocale.each {
+                logger.warn("  [UNUSED]  '{}' — declared in strings_${locale}.properties, not used in code", it)
+            }
+        }
+
+        if (errors == 0 && missingLocale.isEmpty() && unusedDefault.isEmpty()) {
+            logger.lifecycle('  Localization OK: all keys match.')
+        } else {
+            logger.lifecycle("  Result: {} errors, {} warnings",
+                errors, missingLocale.size() + unusedDefault.size() + unusedLocale.size())
+        }
+
+        if (errors > 0) {
+            throw new GradleException(
+                "checkLocalization: ${errors} keys used in code but missing in strings.properties")
+        }
+    }
+}
+
+spotless {
+    encoding 'UTF-8'
+    lineEndings 'UNIX'
+
+    java {
+        target 'src/**/*.java'
+        targetExclude 'build/**', 'src/generated/**'
+
+        importOrder('', '\\#')
+        removeUnusedImports()
+
+        indentWithSpaces(4)
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+
+    format 'misc', {
+        target '*.gradle', '*.md', '.gitignore', '.editorconfig'
+        trimTrailingWhitespace()
+        indentWithSpaces(4)
+        endWithNewline()
+    }
+}
