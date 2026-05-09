@@ -1,0 +1,13 @@
+{
+    "layers": [
+        {
+            "name": "com.velitask.plagin.official.geoMap",
+            "data": {
+                "maket": {"preset": "fill"},
+                "properties": {
+                    "fitTrack": {"value": true}
+                }
+            }
+        }
+    ]
+}

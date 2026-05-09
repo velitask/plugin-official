@@ -163,8 +163,14 @@ public class SlopeSpeedIndicator extends Indicator {
         SlopeSpeedContext ctx = (SlopeSpeedContext) indicatorContext;
         Graphics2D g = ctx.graphics;
 
-        SlopeSensorAtom slope = mSlope.queryAtom("slope", ctx.player.time);
-        DistanceSensorAtom dist = mDistance.queryAtom(ctx.player.time);
+        long slopeRawTime = mSlope.convertToRawTime(ctx.player.time);
+        long distRawTime = mDistance.convertToRawTime(ctx.player.time);
+        if (ctx.player.isPreview) {
+            slopeRawTime = mSlope.clampToSensorRange(slopeRawTime);
+            distRawTime = mDistance.clampToSensorRange(distRawTime);
+        }
+        SlopeSensorAtom slope = mSlope.queryAtom("slope", slopeRawTime);
+        DistanceSensorAtom dist = mDistance.queryAtom(distRawTime);
 
         if (slope == null && dist == null) {
             return;

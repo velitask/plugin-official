@@ -219,7 +219,11 @@ public class SpeedometerIndicator extends Indicator {
         ctx.bgSvg.render(g, x, y, size, size, ctx.background.alpha);
 
         double speedKmh = 0;
-        DistanceSensorAtom atom = mDistance.queryAtom(ctx.player.time);
+        long rawTime = mDistance.convertToRawTime(ctx.player.time);
+        if (ctx.player.isPreview) {
+            rawTime = mDistance.clampToSensorRange(rawTime);
+        }
+        DistanceSensorAtom atom = mDistance.queryAtom(rawTime);
         if (atom != null) {
             speedKmh = atom.speed / 1000.0;
         }

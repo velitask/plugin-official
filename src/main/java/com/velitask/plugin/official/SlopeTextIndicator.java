@@ -1,12 +1,12 @@
 package com.velitask.plugin.official;
 
+import com.velitask.plugin.official.slope.SlopeGroupAtom;
 import com.velitask.sdk.Indicator;
 import com.velitask.sdk.IndicatorContext;
 import com.velitask.sdk.IndicatorSkin;
 import com.velitask.sdk.IndicatorSkinTransfer;
 import com.velitask.sdk.data.SlopeSensorAtom;
-import com.velitask.sdk.db.DataCacheRule;
-import com.velitask.sdk.db.DataParams;
+import com.velitask.sdk.db.PluginDatabase;
 import com.velitask.sdk.db.SensorDataManager;
 import com.velitask.sdk.properties.DisplayConfig;
 import com.velitask.sdk.properties.FontColorProperty;
@@ -22,7 +22,6 @@ import com.velitask.units.format.UnitValue;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.util.List;
 import org.abricos.core.state.maket.HorizontalAlign;
 import org.abricos.core.state.maket.Maket;
 import org.abricos.core.state.maket.VerticalAlign;
@@ -35,23 +34,13 @@ public class SlopeTextIndicator extends Indicator {
 
     private final SlopeAtomProperty mSlope = new SlopeAtomProperty();
 
-    private static final DataCacheRule GROUP_CACHE_RULE = DataCacheRule.byParams();
-
     {
         mSlope.addManager(
                 new SensorDataManager.Builder<>("slope", mSlope.getAtomClass())
                         .table(SlopeAtomProperty.TABLE_NAME)
-                        .where("group_id > 0")
                         .byTime()
                         .build()
         );
-
-        mSlope.query("slopeGroup")
-                .where("data_id = {groupId}")
-                .limit(1)
-                .cache(GROUP_CACHE_RULE)
-                .cacheSize(8)
-                .buildList();
     }
 
     private final FontColorProperty mText = new FontColorProperty();
@@ -124,19 +113,19 @@ public class SlopeTextIndicator extends Indicator {
         SlopeTextContext ctx = (SlopeTextContext) indicatorContext;
         Graphics2D g = ctx.graphics;
 
-        SlopeSensorAtom atom = mSlope.queryAtom("slope", ctx.player.time);
+        long rawTime = mSlope.convertToRawTime(ctx.player.time);
+        if (ctx.player.isPreview) {
+            rawTime = mSlope.clampToSensorRange(rawTime);
+        }
+        SlopeSensorAtom atom = mSlope.queryAtom("slope", rawTime);
         if (atom == null) {
             return;
         }
 
-        DataParams groupParams = DataParams
-                .of("sensorId", mSlope.getSensorId())
-                .set("groupId", atom.groupid);
-        List<SlopeSensorAtom> groups = mSlope.queryList("slopeGroup", groupParams);
-        if (groups == null || groups.isEmpty()) {
+        SlopeGroupAtom group = queryGroupForAtom(ctx.db, mSlope.getSensorId(), atom);
+        if (group == null) {
             return;
         }
-        SlopeSensorAtom group = groups.get(0);
 
         long distanceSlope = atom.distance - group.distance;
         long elevationSlope = atom.elevation - group.elevation;
@@ -172,6 +161,21 @@ public class SlopeTextIndicator extends Indicator {
         g.setColor(ctx.text.color.value);
 
         ctx.textAlign.drawText(g, text, ctx.width, ctx.height);
+    }
+
+    private static SlopeGroupAtom queryGroupForAtom(PluginDatabase db, long sensorId, SlopeSensorAtom atom) {
+        if (db == null) {
+            return null;
+        }
+        return db.query(
+                "SELECT * FROM ${table:slope_groups}"
+                + " WHERE sensor_id = ?"
+                + " AND distance <= ?"
+                + " AND ? < (distance + distanceDelta)"
+                + " LIMIT 1",
+                SlopeGroupAtom.class,
+                sensorId, atom.distance, atom.distance
+        );
     }
 
     private String slopeTypeToString(int type) {

@@ -1,7 +1,6 @@
 package com.velitask.plugin.official.geo;
 
 import com.velitask.plugin.official.GeoMapIndicator;
-import com.velitask.sdk.Indicator;
 import com.velitask.sdk.IndicatorContext;
 import com.velitask.sdk.data.GeoSensorAtom;
 import com.velitask.sdk.db.DataCacheRule;
@@ -28,7 +27,7 @@ public class GeoTrackFigure extends Figure<GeoFigureContext> {
     {
         mGeoSensor.query("track")
                 .where("zoom = {zoom}")
-                .orderBy("measureTime")
+                .orderBy("timeRaw")
                 .cache(DataCacheRule.byParams())
                 .cacheSize(2)
                 .buildList();
@@ -52,11 +51,6 @@ public class GeoTrackFigure extends Figure<GeoFigureContext> {
     @Override
     public String getTitle() {
         return localized(KEY + ".title");
-    }
-
-    @Override
-    public Class<? extends Indicator> parent() {
-        return GeoMapIndicator.class;
     }
 
     @Override

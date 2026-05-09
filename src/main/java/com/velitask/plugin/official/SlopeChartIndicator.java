@@ -1,12 +1,14 @@
 package com.velitask.plugin.official;
 
 import com.velitask.plugin.official.charts.MillimetersChart;
+import com.velitask.plugin.official.slope.SlopeGroupAtom;
 import com.velitask.sdk.Indicator;
 import com.velitask.sdk.IndicatorContext;
 import com.velitask.sdk.IndicatorSkin;
 import com.velitask.sdk.data.SlopeSensorAtom;
 import com.velitask.sdk.db.DataCacheRule;
 import com.velitask.sdk.db.DataParams;
+import com.velitask.sdk.db.PluginDatabase;
 import com.velitask.sdk.db.SensorDataManager;
 import com.velitask.sdk.properties.DisplayConfig;
 import com.velitask.sdk.properties.DisplayHint;
@@ -48,25 +50,14 @@ public class SlopeChartIndicator extends Indicator {
         mSlope.addManager(
                 new SensorDataManager.Builder<>("slope", mSlope.getAtomClass())
                         .table(SlopeAtomProperty.TABLE_NAME)
-                        .where("group_id > 0")
                         .byTime()
                         .build()
         );
 
         mSlope.query("slopeRange")
-                .where("group_id > 0 "
-                        + "AND (distance + distanceDelta) >= {minDistance} "
+                .where("(distance + distanceDelta) >= {minDistance} "
                         + "AND distance < {maxDistance}")
-                .orderBy("measureTime")
-                .cache(DataCacheRule.none())
-                .cacheSize(2)
-                .buildList();
-
-        mSlope.query("slopeGroupRange")
-                .where("group_id = 0 "
-                        + "AND (distance + distanceDelta) >= {minDistance} "
-                        + "AND distance < {maxDistance}")
-                .orderBy("distance")
+                .orderBy("timeRaw")
                 .cache(DataCacheRule.none())
                 .cacheSize(2)
                 .buildList();
@@ -157,7 +148,11 @@ public class SlopeChartIndicator extends Indicator {
         SlopeChartContext ctx = (SlopeChartContext) indicatorContext;
         Graphics2D g = ctx.graphics;
 
-        SlopeSensorAtom currAtom = mSlope.queryAtom("slope", ctx.player.time);
+        long rawTime = mSlope.convertToRawTime(ctx.player.time);
+        if (ctx.player.isPreview) {
+            rawTime = mSlope.clampToSensorRange(rawTime);
+        }
+        SlopeSensorAtom currAtom = mSlope.queryAtom("slope", rawTime);
         if (currAtom == null) {
             return;
         }
@@ -179,7 +174,7 @@ public class SlopeChartIndicator extends Indicator {
                 .set("maxDistance", maxDist);
 
         List<SlopeSensorAtom> atoms = mSlope.queryList("slopeRange", rangeParams);
-        List<SlopeSensorAtom> groups = mSlope.queryList("slopeGroupRange", rangeParams);
+        List<SlopeGroupAtom> groups = queryGroups(ctx.db, mSlope.getSensorId(), minDist, maxDist);
 
         if (atoms == null || atoms.isEmpty()) {
             return;
@@ -196,11 +191,28 @@ public class SlopeChartIndicator extends Indicator {
         renderMarker(g, chart, currAtom, ctx);
     }
 
+    private static List<SlopeGroupAtom> queryGroups(PluginDatabase db,
+            long sensorId, long minDistance, long maxDistance) {
+        if (db == null) {
+            return List.of();
+        }
+        return db.queryList(
+                "SELECT * FROM ${table:slope_groups}"
+                + " WHERE sensor_id = ?"
+                + " AND (distance + distanceDelta) >= ?"
+                + " AND distance < ?"
+                + " ORDER BY distance",
+                SlopeGroupAtom.class,
+                sensorId, minDistance, maxDistance
+        );
+    }
+
     private void renderGroupFills(Graphics2D g, MillimetersChart chart,
-            List<SlopeSensorAtom> groups,
+            List<SlopeGroupAtom> groups,
             List<SlopeSensorAtom> atoms) {
-        for (SlopeSensorAtom groupAtom : groups) {
-            if (groupAtom.getNextDistance() < chart.getMinMmX()) {
+        for (SlopeGroupAtom groupAtom : groups) {
+            long groupEndDistance = groupAtom.distance + groupAtom.distanceDelta;
+            if (groupEndDistance < chart.getMinMmX()) {
                 continue;
             }
             if (groupAtom.distance > chart.getMaxMmX()) {
@@ -216,7 +228,7 @@ public class SlopeChartIndicator extends Indicator {
 
             SlopeSensorAtom item = null;
             for (SlopeSensorAtom point : atoms) {
-                if (point.groupid != groupAtom.id) {
+                if (point.distance < groupAtom.distance || point.distance >= groupEndDistance) {
                     continue;
                 }
                 int x2 = chart.convertMmToPxX(point.getNextDistance());

@@ -22,12 +22,14 @@ cd plugin-official
 
 ## Что внутри
 
-- `src/main/java/com/velitask/plugin/official/` — реализации индикаторов (Speedometer, GeoMap, charts, time/distance/slope, video и т.д.).
-- `src/main/java/com/velitask/plugin/official/charts/` — индикаторы-графики (миллиметры, уклон, скорость).
-- `src/main/java/com/velitask/plugin/official/figures/` — примитивные фигуры (Line, Ellipse, Rectangle).
-- `src/main/java/com/velitask/plugin/official/geo/` — geo-фигуры (трек, позиция).
+- `src/main/java/com/velitask/plugin/official/` — точка входа `VelitaskPlagin` и 14 классов индикаторов верхнего уровня (Speedometer, GeoMap, Compass, Video, графики Speed/Slope, текстовые time/distance/slope, примитивы Line/Ellipse/Rectangle).
+- `src/main/java/com/velitask/plugin/official/charts/` — внутренние помощники для графических индикаторов.
+- `src/main/java/com/velitask/plugin/official/geo/` — geo-фигуры (`GeoTrackFigure`, `GeoPositionFigure`), используются `GeoMapIndicator`.
+- `src/main/java/com/velitask/plugin/official/slope/` — аналитика уклона (`SlopeDetector`, `SlopeGroup`, `SlopeGroupAtom`); вычисляется в `onSourceImported`, потребляется slope-индикаторами.
 - `src/main/resources/strings/` — локализация (`strings.properties` + `strings_ru.properties`).
-- `src/main/resources/svg/` — SVG-ассеты для визуальных индикаторов.
+- `src/main/resources/svg/` — SVG-ассеты для визуальных индикаторов (компас, шкалы спидометра и т.д.).
+- `src/main/resources/sql/setup/create.sql` — схема БД плагина (`slope_groups`, `slope_atom_groups`); SDK выполняет при первой установке плагина в проект.
+- `src/main/resources/templates/` — system-level Mixel-шаблоны (`*.vttp`), используются как последний fallback при открытии источника без проектного и пользовательского шаблона. См. `templates/README.md`.
 
 ## Как зависит от SDK
 

@@ -1,0 +1,22 @@
+{
+    "layers": [
+        {
+            "name": "com.velitask.plagin.official.video",
+            "data": {
+                "maket": {"preset": "fill"}
+            }
+        },
+        {
+            "name": "com.velitask.plagin.official.speedometer",
+            "data": {
+                "maket": {"preset": "auto"}
+            }
+        },
+        {
+            "name": "com.velitask.plagin.official.geoMap",
+            "data": {
+                "maket": {"preset": "auto"}
+            }
+        }
+    ]
+}

@@ -190,7 +190,7 @@ public class GeoMapIndicator extends Indicator {
         for (int tx = xIndexMin; tx <= xIndexMax; tx++) {
             double x = (tx - xIndexMin) * GeoUtils.TILE_SIZE + dx;
             for (int ty = yIndexMin; ty <= yIndexMax; ty++) {
-                OSMTile tile = ctx.player.hasMultiThread
+                OSMTile tile = ctx.player.isPreview
                         ? mTiles.getTile(zoomValue, tx, ty)
                         : mTiles.getTileBlocking(zoomValue, tx, ty, 5_000);
                 if (tile == null || tile.getImage() == null) {
@@ -243,23 +243,29 @@ public class GeoMapIndicator extends Indicator {
             double cPx = 0;
             double cPy = 0;
 
-            if (fitTrack.value) {
-                LandBounds b = mGeoSensor.queryLandBounds();
-                if (b != null) {
-                    zm = new MapZoom(
-                            computeFitZoom(width, height, b)
-                    );
-                    double centerLat = (b.latMin() + b.latMax()) / 2.0;
-                    double centerLon = (b.lonMin() + b.lonMax()) / 2.0;
-                    cPx = zm.pixelX(centerLon);
-                    cPy = zm.pixelY(centerLat);
-                }
-            } else {
-                GeoSensorAtom atom = mGeoSensor.queryAtom(player.time);
-                if (atom != null) {
-                    zm = new MapZoom(mGeoZoom.createContext().value);
-                    cPx = zm.pixelX(atom.lon);
-                    cPy = zm.pixelY(atom.lat);
+            if (mGeoSensor.getSensorId() > 0) {
+                if (fitTrack.value) {
+                    LandBounds b = mGeoSensor.queryLandBounds();
+                    if (b != null) {
+                        zm = new MapZoom(
+                                computeFitZoom(width, height, b)
+                        );
+                        double centerLat = (b.latMin() + b.latMax()) / 2.0;
+                        double centerLon = (b.lonMin() + b.lonMax()) / 2.0;
+                        cPx = zm.pixelX(centerLon);
+                        cPy = zm.pixelY(centerLat);
+                    }
+                } else {
+                    long rawTime = mGeoSensor.convertToRawTime(player.time);
+                    if (player.isPreview) {
+                        rawTime = mGeoSensor.clampToSensorRange(rawTime);
+                    }
+                    GeoSensorAtom atom = mGeoSensor.queryAtom(rawTime);
+                    if (atom != null) {
+                        zm = new MapZoom(mGeoZoom.createContext().value);
+                        cPx = zm.pixelX(atom.lon);
+                        cPy = zm.pixelY(atom.lat);
+                    }
                 }
             }
             zoom = zm;

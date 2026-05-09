@@ -42,7 +42,7 @@ public class SpeedChartIndicator extends Indicator {
         mDistance.query("speedRange")
                 .where("(distance + distanceDelta) >= {minDistance} "
                         + "AND distance < {maxDistance}")
-                .orderBy("measureTime")
+                .orderBy("timeRaw")
                 .cache(DataCacheRule.none())
                 .cacheSize(2)
                 .buildList();
@@ -185,7 +185,11 @@ public class SpeedChartIndicator extends Indicator {
         SpeedChartContext ctx = (SpeedChartContext) indicatorContext;
         Graphics2D g = ctx.graphics;
 
-        DistanceSensorAtom currAtom = mDistance.queryAtom(ctx.player.time);
+        long rawTime = mDistance.convertToRawTime(ctx.player.time);
+        if (ctx.player.isPreview) {
+            rawTime = mDistance.clampToSensorRange(rawTime);
+        }
+        DistanceSensorAtom currAtom = mDistance.queryAtom(rawTime);
         if (currAtom == null) {
             return;
         }

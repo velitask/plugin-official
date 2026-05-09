@@ -1,7 +1,6 @@
 package com.velitask.plugin.official.geo;
 
 import com.velitask.plugin.official.GeoMapIndicator;
-import com.velitask.sdk.Indicator;
 import com.velitask.sdk.IndicatorContext;
 import com.velitask.sdk.data.GeoSensorAtom;
 import com.velitask.sdk.figures.Figure;
@@ -60,11 +59,6 @@ public class GeoPositionFigure extends Figure<GeoFigureContext> {
     }
 
     @Override
-    public Class<? extends Indicator> parent() {
-        return GeoMapIndicator.class;
-    }
-
-    @Override
     public IProperty[] defineProperties() {
         return new IProperty[]{mGeoSensor, mFillColor, mBorderColor, mSize};
     }
@@ -83,7 +77,11 @@ public class GeoPositionFigure extends Figure<GeoFigureContext> {
             return;
         }
 
-        GeoSensorAtom atom = mGeoSensor.queryAtom(ctx.indicator.player.time);
+        long rawTime = mGeoSensor.convertToRawTime(ctx.indicator.player.time);
+        if (ctx.indicator.player.isPreview) {
+            rawTime = mGeoSensor.clampToSensorRange(rawTime);
+        }
+        GeoSensorAtom atom = mGeoSensor.queryAtom(rawTime);
         if (atom == null) {
             return;
         }

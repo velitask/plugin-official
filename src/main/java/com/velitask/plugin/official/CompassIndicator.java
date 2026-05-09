@@ -125,7 +125,11 @@ public class CompassIndicator extends Indicator {
         Graphics2D g = ctx.graphics;
 
         double bearing = 0;
-        GeoSensorAtom atom = mGeoSensor.queryAtom(ctx.player.time);
+        long rawTime = mGeoSensor.convertToRawTime(ctx.player.time);
+        if (ctx.player.isPreview) {
+            rawTime = mGeoSensor.clampToSensorRange(rawTime);
+        }
+        GeoSensorAtom atom = mGeoSensor.queryAtom(rawTime);
         if (atom != null) {
             bearing = Coordinates.bearing(atom.latDelta, atom.lonDelta, atom.lat);
         }

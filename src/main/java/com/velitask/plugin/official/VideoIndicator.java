@@ -103,7 +103,11 @@ public class VideoIndicator extends Indicator {
         int innerW = Math.max(1, ctx.width - bw);
         int innerH = Math.max(1, ctx.height - bw);
 
-        BufferedImage frame = ctx.video.frameAt(ctx.player.time, innerW, innerH);
+        long rawTime = mVideo.convertToRawTime(ctx.player.time);
+        if (ctx.player.isPreview) {
+            rawTime = mVideo.clampToSensorRange(rawTime);
+        }
+        BufferedImage frame = ctx.video.frameAt(rawTime, innerW, innerH);
         if (frame == null) {
             return;
         }

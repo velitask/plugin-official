@@ -93,7 +93,11 @@ public class DistanceTextIndicator extends Indicator {
         DistanceTextContext ctx = (DistanceTextContext) indicatorContext;
         Graphics2D g = ctx.graphics;
 
-        DistanceSensorAtom atom = mDistanceSensor.queryAtom(ctx.player.time);
+        long rawTime = mDistanceSensor.convertToRawTime(ctx.player.time);
+        if (ctx.player.isPreview) {
+            rawTime = mDistanceSensor.clampToSensorRange(rawTime);
+        }
+        DistanceSensorAtom atom = mDistanceSensor.queryAtom(rawTime);
         if (atom == null) {
             return;
         }

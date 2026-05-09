@@ -1,0 +1,10 @@
+{
+    "layers": [
+        {
+            "name": "com.velitask.plagin.official.video",
+            "data": {
+                "maket": {"preset": "fill"}
+            }
+        }
+    ]
+}
