@@ -1,0 +1,10 @@
+{
+    "layers": [
+        {
+            "name": "com.velitask.plagin.official.image",
+            "data": {
+                "maket": {"preset": "fill"}
+            }
+        }
+    ]
+}

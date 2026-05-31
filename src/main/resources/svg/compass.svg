@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <style><![CDATA[
+    <style><![CDATA[
     .body      { fill: #223344; }
     .ring      { fill: none; stroke: #ffffff; stroke-width: 3; }
     .tick      { stroke: #ffffff; stroke-width: 2; stroke-linecap: round; }
@@ -9,16 +9,16 @@
     .axis      { fill: #333333; }
   ]]></style>
 
-  <circle class="body" cx="50" cy="50" r="46"/>
-  <circle class="ring" cx="50" cy="50" r="46"/>
+    <circle class="body" cx="50" cy="50" r="46"/>
+    <circle class="ring" cx="50" cy="50" r="46"/>
 
-  <line class="tick" x1="50" y1="6"  x2="50" y2="14"/>
-  <line class="tick" x1="50" y1="86" x2="50" y2="94"/>
-  <line class="tick" x1="6"  y1="50" x2="14" y2="50"/>
-  <line class="tick" x1="86" y1="50" x2="94" y2="50"/>
+    <line class="tick" x1="50" y1="6"  x2="50" y2="14"/>
+    <line class="tick" x1="50" y1="86" x2="50" y2="94"/>
+    <line class="tick" x1="6"  y1="50" x2="14" y2="50"/>
+    <line class="tick" x1="86" y1="50" x2="94" y2="50"/>
 
-  <polygon class="needle-n" points="50,14 44,50 56,50"/>
-  <polygon class="needle-s" points="50,86 44,50 56,50"/>
+    <polygon class="needle-n" points="50,14 44,50 56,50"/>
+    <polygon class="needle-s" points="50,86 44,50 56,50"/>
 
-  <circle class="axis" cx="50" cy="50" r="4"/>
+    <circle class="axis" cx="50" cy="50" r="4"/>
 </svg>

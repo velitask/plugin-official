@@ -11,9 +11,11 @@ import com.velitask.sdk.properties.GeoSensorProperty;
 import com.velitask.sdk.properties.IProperty;
 import com.velitask.sdk.properties.LineProperty;
 import com.velitask.sdk.properties.PropertyGroup;
+import com.velitask.sdk.properties.VisibleProperty;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.Point2D;
 import java.util.List;
 
 public class GeoTrackFigure extends Figure<GeoFigureContext> {
@@ -43,6 +45,23 @@ public class GeoTrackFigure extends Figure<GeoFigureContext> {
         mLine.getThickness().set(5);
     }
 
+    private final VisibleProperty mPassedOnly = new VisibleProperty() {
+        {
+            setDefault(false);
+            set(false);
+        }
+
+        @Override
+        public String getName() {
+            return "passedOnly";
+        }
+
+        @Override
+        public String getTitle() {
+            return localized(KEY + ".passedOnly.title");
+        }
+    };
+
     @Override
     public String getName() {
         return NAME;
@@ -55,12 +74,13 @@ public class GeoTrackFigure extends Figure<GeoFigureContext> {
 
     @Override
     public IProperty[] defineProperties() {
-        return new IProperty[]{mGeoSensor, mLine};
+        return new IProperty[]{mGeoSensor, mLine, mPassedOnly};
     }
 
     @Override
     public void configureDisplay(DisplayConfig config) {
         config.set(mLine, PropertyGroup.APPEARANCE);
+        config.set(mPassedOnly, PropertyGroup.APPEARANCE);
     }
 
     @Override
@@ -84,16 +104,45 @@ public class GeoTrackFigure extends Figure<GeoFigureContext> {
         float strokeWidth = (float) (ctx.line.thickness * ctx.scale);
         g.setStroke(buildStroke(strokeWidth, ctx.line.dashPattern));
 
+        int upTo = points.size();
+        Point2D.Double tail = null;
+        if (ctx.passedOnly.value) {
+            long rawTime = mGeoSensor.convertToRawTime(ctx.indicator.player.time);
+            int idx = lowerBoundByTimeRaw(points, rawTime);
+            upTo = Math.min(idx + 1, points.size());
+            GeoSensorAtom curr = points.get(Math.min(idx, points.size() - 1));
+            tail = ctx.toScreen(curr.calcLat(rawTime), curr.calcLon(rawTime));
+        }
+
         int prevX = Integer.MIN_VALUE, prevY = Integer.MIN_VALUE;
-        for (GeoSensorAtom p : points) {
-            int sx = ctx.toScreenX(p.lon);
-            int sy = ctx.toScreenY(p.lat);
+        for (int i = 0; i < upTo; i++) {
+            GeoSensorAtom p = points.get(i);
+            Point2D.Double pt = ctx.toScreen(p.lat, p.lon);
+            int sx = (int) pt.x;
+            int sy = (int) pt.y;
             if (prevX != Integer.MIN_VALUE) {
                 g.drawLine(prevX, prevY, sx, sy);
             }
             prevX = sx;
             prevY = sy;
         }
+        if (tail != null && prevX != Integer.MIN_VALUE) {
+            g.drawLine(prevX, prevY, (int) tail.x, (int) tail.y);
+        }
+    }
+
+    private static int lowerBoundByTimeRaw(List<GeoSensorAtom> points, long t) {
+        int lo = 0;
+        int hi = points.size();
+        while (lo < hi) {
+            int mid = (lo + hi) >>> 1;
+            if (points.get(mid).timeRaw <= t) {
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+        return Math.max(0, lo - 1);
     }
 
     private static BasicStroke buildStroke(float width, String pattern) {
@@ -122,12 +171,14 @@ public class GeoTrackFigure extends Figure<GeoFigureContext> {
 
         public final long sensorId;
         public final LineProperty.LineContext line;
+        public final VisibleProperty.BooleanContext passedOnly;
 
         public TrackContext(GeoMapIndicator.GeoMapContext indCtx) {
             super(indCtx);
 
             sensorId = mGeoSensor.getSensorId();
             line = mLine.createContext();
+            passedOnly = mPassedOnly.createContext();
         }
     }
 

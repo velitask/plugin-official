@@ -7,11 +7,14 @@ import com.velitask.sdk.IndicatorSkinTransfer;
 import com.velitask.sdk.properties.DisplayConfig;
 import com.velitask.sdk.properties.FontColorProperty;
 import com.velitask.sdk.properties.IProperty;
+import com.velitask.sdk.properties.LongestDurationStrategy;
 import com.velitask.sdk.properties.PropertyGroup;
+import com.velitask.sdk.properties.SourceProperty;
 import com.velitask.sdk.properties.StringProperty;
 import com.velitask.sdk.properties.TextAlignProperty;
 import com.velitask.sdk.properties.TextTemplateProperty;
 import com.velitask.sdk.properties.TimeZoneProperty;
+import com.velitask.units.duration.Duration;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -30,6 +33,21 @@ public class TimeTextIndicator extends Indicator {
     public static final String NAME = "timeText";
 
     private static final String KEY = _KEY + "." + NAME;
+
+    private final SourceProperty mReferenceSource = new SourceProperty(
+            null,
+            src -> src != null && src.getDuration() > 0L
+    ) {
+        @Override
+        public String getName() {
+            return "referenceSource";
+        }
+
+        @Override
+        public String getTitle() {
+            return localized(KEY + ".referenceSource.title");
+        }
+    };
 
     private final FontColorProperty mFont = new FontColorProperty();
 
@@ -50,6 +68,10 @@ public class TimeTextIndicator extends Indicator {
     );
 
     private final TimeTextTemplateProperty mTemplate = new TimeTextTemplateProperty();
+
+    public TimeTextIndicator() {
+        mReferenceSource.setStrategy(new LongestDurationStrategy());
+    }
 
     private TextTemplateProperty getTemplate() {
         return mTemplate;
@@ -86,6 +108,7 @@ public class TimeTextIndicator extends Indicator {
     @Override
     public IProperty[] defineProperties() {
         return new IProperty[]{
+            mReferenceSource,
             mFont, mTextAlign,
             mTimeZone, mTimeFormat, mDurationFormat,
             getTemplate()
@@ -118,19 +141,27 @@ public class TimeTextIndicator extends Indicator {
         Graphics2D g = ctx.graphics;
 
         long time = ctx.player.time;
-        long passed = time - ctx.player.period.start;
-        long left = ctx.player.period.end - time;
+        long periodStart;
+        long periodEnd;
+        if (ctx.refSource.sourceId != 0L && ctx.refSource.duration > 0L) {
+            periodStart = ctx.refSource.startTime;
+            periodEnd = ctx.refSource.endTime;
+        } else {
+            periodStart = ctx.player.period.start;
+            periodEnd = ctx.player.period.end;
+        }
+        long passed = time - periodStart;
+        long left = periodEnd - time;
 
         ZoneId zone = ctx.timeZone.zoneId;
         DateTimeFormatter timeFmt = parseFormatter(ctx.timeFormat.value, "yyyy-MM-dd HH:mm:ss");
-        DateTimeFormatter durFmt = parseFormatter(ctx.durationFormat.value, "HH:mm:ss");
 
         String currStr = timeFmt.format(
                 LocalDateTime.ofInstant(Instant.ofEpochMilli(time), zone)
         );
         String tzidStr = zone.getDisplayName(TextStyle.FULL, Locale.getDefault());
-        String passedStr = formatDuration(passed, durFmt);
-        String leftStr = formatDuration(left, durFmt);
+        String passedStr = Duration.format(passed, ctx.durationFormat.value);
+        String leftStr = Duration.format(left, ctx.durationFormat.value);
 
         String text = ctx.template.makeText(currStr, tzidStr, passedStr, leftStr);
 
@@ -141,13 +172,6 @@ public class TimeTextIndicator extends Indicator {
         g.setColor(ctx.text.color.value);
 
         ctx.textAlign.drawText(g, text, ctx.width, ctx.height);
-    }
-
-    private static String formatDuration(long durationMs, DateTimeFormatter fmt) {
-        LocalDateTime dt = LocalDateTime.ofInstant(
-                Instant.ofEpochMilli(Math.max(0, durationMs)),
-                ZoneId.of("UTC"));
-        return fmt.format(dt);
     }
 
     private static DateTimeFormatter parseFormatter(String pattern, String fallback) {
@@ -196,6 +220,7 @@ public class TimeTextIndicator extends Indicator {
         public final TimeZoneProperty.TimeZoneContext timeZone;
         public final StringProperty.StringContext timeFormat;
         public final StringProperty.StringContext durationFormat;
+        public final SourceProperty.SourceContext refSource;
 
         public TimeTextContext(Player player, Canvas canvas) {
             super(player, canvas);
@@ -205,6 +230,7 @@ public class TimeTextIndicator extends Indicator {
             timeZone = mTimeZone.createContext();
             timeFormat = mTimeFormat.createContext();
             durationFormat = mDurationFormat.createContext();
+            refSource = mReferenceSource.createContext();
         }
     }
 

@@ -39,11 +39,15 @@ public class VelitaskPlagin implements IPlagin {
     public IIndicator[] defineIndicators() {
         return new IIndicator[]{
             new VideoIndicator(),
+            new ImageIndicator(),
             new SpeedometerIndicator(),
             new DistanceTextIndicator(),
             new SlopeChartIndicator(),
             new SlopeTextIndicator(),
+            new TemperatureTextIndicator(),
             new TimeTextIndicator(),
+            new TextIndicator(),
+            new LatLonTextIndicator(),
             new GeoMapIndicator(),
             new CompassIndicator(),
             new RectangleIndicator(),

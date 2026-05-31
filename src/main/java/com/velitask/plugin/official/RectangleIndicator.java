@@ -6,7 +6,9 @@ import com.velitask.sdk.IndicatorSkin;
 import com.velitask.sdk.properties.BorderProperty;
 import com.velitask.sdk.properties.ColorProperty;
 import com.velitask.sdk.properties.DisplayConfig;
+import com.velitask.sdk.properties.DisplayHint;
 import com.velitask.sdk.properties.IProperty;
+import com.velitask.sdk.properties.IntegerProperty;
 import com.velitask.sdk.properties.PropertyGroup;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -28,6 +30,28 @@ public class RectangleIndicator extends Indicator {
             FILL_COLOR,
             localized(KEY + "." + FILL_COLOR + ".title")
     );
+
+    private final IntegerProperty mFillTransparency = new IntegerProperty() {
+        {
+            setRange(0, 255);
+            setSkinnable(false);
+        }
+
+        @Override
+        public String getName() {
+            return "fillTransparency";
+        }
+
+        @Override
+        public Integer getDefault() {
+            return 128;
+        }
+
+        @Override
+        public String getTitle() {
+            return localized(KEY + ".fillTransparency.title");
+        }
+    };
 
     private final BorderProperty mBorder = new BorderProperty();
 
@@ -61,12 +85,13 @@ public class RectangleIndicator extends Indicator {
 
     @Override
     public IProperty[] defineProperties() {
-        return new IProperty[]{mFillColor, mBorder};
+        return new IProperty[]{mFillColor, mFillTransparency, mBorder};
     }
 
     @Override
     public void configureDisplay(DisplayConfig config) {
         config.set(mFillColor, PropertyGroup.APPEARANCE);
+        config.set(mFillTransparency, PropertyGroup.APPEARANCE, DisplayHint.SLIDER);
     }
 
     @Override
@@ -100,7 +125,9 @@ public class RectangleIndicator extends Indicator {
         int w = Math.max(1, ctx.width - bw);
         int h = Math.max(1, ctx.height - bw);
 
-        g.setColor(ctx.fillColor.value);
+        Color base = ctx.fillColor.value;
+        int alpha = Math.max(0, Math.min(255, ctx.fillTransparency.value));
+        g.setColor(new Color(base.getRed(), base.getGreen(), base.getBlue(), alpha));
         if (cr > 0) {
             g.fillRoundRect(x, y, w, h, cr, cr);
         } else {
@@ -121,11 +148,13 @@ public class RectangleIndicator extends Indicator {
     public class RectangleContext extends IndicatorContext {
 
         public final ColorProperty.ColorContext fillColor;
+        public final IntegerProperty.IntegerContext fillTransparency;
         public final BorderProperty.BorderContext border;
 
         public RectangleContext(Player player, Canvas canvas) {
             super(player, canvas);
             fillColor = mFillColor.createContext();
+            fillTransparency = mFillTransparency.createContext();
             border = mBorder.createContext();
         }
     }

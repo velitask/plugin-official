@@ -10,6 +10,7 @@ import com.velitask.sdk.db.DataCacheRule;
 import com.velitask.sdk.db.DataParams;
 import com.velitask.sdk.db.PluginDatabase;
 import com.velitask.sdk.db.SensorDataManager;
+import com.velitask.sdk.properties.ColorProperty;
 import com.velitask.sdk.properties.DisplayConfig;
 import com.velitask.sdk.properties.DisplayHint;
 import com.velitask.sdk.properties.GeoZoomProperty;
@@ -36,13 +37,38 @@ public class SlopeChartIndicator extends Indicator {
 
     private static final String KEY = _KEY + "." + NAME;
 
-    private static final int SLOPE_GROUP_COLOR_ALPHA = 30;
-
-    private static final Color FILL_DOWN = setAlpha(Color.GREEN, SLOPE_GROUP_COLOR_ALPHA);
-    private static final Color FILL_UP = setAlpha(Color.RED, SLOPE_GROUP_COLOR_ALPHA);
-    private static final Color FILL_PLAIN = setAlpha(Color.WHITE, SLOPE_GROUP_COLOR_ALPHA + 10);
-
     private static final int MIN_PX_BETWEEN_POINTS = 5;
+
+    private final ColorProperty mFillPlain = new ColorProperty(
+            Color.WHITE, "fillPlain", localized(KEY + ".fillPlain.title"));
+
+    private final ColorProperty mFillUp = new ColorProperty(
+            Color.RED, "fillUp", localized(KEY + ".fillUp.title"));
+
+    private final ColorProperty mFillDown = new ColorProperty(
+            Color.GREEN, "fillDown", localized(KEY + ".fillDown.title"));
+
+    private final IntegerProperty mFillTransparency = new IntegerProperty() {
+        {
+            setRange(0, 255);
+            setSkinnable(false);
+        }
+
+        @Override
+        public String getName() {
+            return "fillTransparency";
+        }
+
+        @Override
+        public Integer getDefault() {
+            return 30;
+        }
+
+        @Override
+        public String getTitle() {
+            return localized(KEY + ".fillTransparency.title");
+        }
+    };
 
     private final SlopeAtomProperty mSlope = new SlopeAtomProperty();
 
@@ -122,7 +148,8 @@ public class SlopeChartIndicator extends Indicator {
         return new IProperty[]{
             mSlope,
             mGeoZoom, mEleChartScale,
-            mLine
+            mLine,
+            mFillPlain, mFillUp, mFillDown, mFillTransparency
         };
     }
 
@@ -131,6 +158,10 @@ public class SlopeChartIndicator extends Indicator {
         config.set(mGeoZoom, PropertyGroup.APPEARANCE);
         config.set(mEleChartScale, PropertyGroup.APPEARANCE, DisplayHint.SLIDER);
         config.set(mLine, PropertyGroup.APPEARANCE);
+        config.set(mFillPlain, PropertyGroup.APPEARANCE);
+        config.set(mFillUp, PropertyGroup.APPEARANCE);
+        config.set(mFillDown, PropertyGroup.APPEARANCE);
+        config.set(mFillTransparency, PropertyGroup.APPEARANCE, DisplayHint.SLIDER);
     }
 
     @Override
@@ -183,7 +214,7 @@ public class SlopeChartIndicator extends Indicator {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         if (groups != null && !groups.isEmpty()) {
-            renderGroupFills(g, chart, groups, atoms);
+            renderGroupFills(g, chart, groups, atoms, ctx);
         }
 
         renderLine(g, chart, atoms, ctx);
@@ -209,7 +240,13 @@ public class SlopeChartIndicator extends Indicator {
 
     private void renderGroupFills(Graphics2D g, MillimetersChart chart,
             List<SlopeGroupAtom> groups,
-            List<SlopeSensorAtom> atoms) {
+            List<SlopeSensorAtom> atoms,
+            SlopeChartContext ctx) {
+        int alpha = ctx.fillTransparency.value;
+        Color fillDown = setAlpha(ctx.fillDown.value, alpha);
+        Color fillUp = setAlpha(ctx.fillUp.value, alpha);
+        Color fillPlain = setAlpha(ctx.fillPlain.value, alpha);
+
         for (SlopeGroupAtom groupAtom : groups) {
             long groupEndDistance = groupAtom.distance + groupAtom.distanceDelta;
             if (groupEndDistance < chart.getMinMmX()) {
@@ -246,11 +283,11 @@ public class SlopeChartIndicator extends Indicator {
 
             Color fill;
             if (groupAtom.slopeType < 0) {
-                fill = FILL_DOWN;
+                fill = fillDown;
             } else if (groupAtom.slopeType > 0) {
-                fill = FILL_UP;
+                fill = fillUp;
             } else {
-                fill = FILL_PLAIN;
+                fill = fillPlain;
             }
             g.setColor(fill);
             g.fillPolygon(polygon);
@@ -317,12 +354,20 @@ public class SlopeChartIndicator extends Indicator {
         public final IntegerProperty.IntegerContext geoZoom;
         public final IntegerProperty.IntegerContext eleChartScale;
         public final LineProperty.LineContext line;
+        public final ColorProperty.ColorContext fillPlain;
+        public final ColorProperty.ColorContext fillUp;
+        public final ColorProperty.ColorContext fillDown;
+        public final IntegerProperty.IntegerContext fillTransparency;
 
         public SlopeChartContext(Player player, Canvas canvas) {
             super(player, canvas);
             geoZoom = mGeoZoom.createContext();
             eleChartScale = mEleChartScale.createContext();
             line = mLine.createContext();
+            fillPlain = mFillPlain.createContext();
+            fillUp = mFillUp.createContext();
+            fillDown = mFillDown.createContext();
+            fillTransparency = mFillTransparency.createContext();
         }
     }
 

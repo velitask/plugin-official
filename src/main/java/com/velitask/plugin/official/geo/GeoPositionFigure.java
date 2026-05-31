@@ -14,6 +14,7 @@ import com.velitask.sdk.properties.SizeProperty;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.Point2D;
 
 public class GeoPositionFigure extends Figure<GeoFigureContext> {
 
@@ -86,8 +87,9 @@ public class GeoPositionFigure extends Figure<GeoFigureContext> {
             return;
         }
 
-        int cx = ctx.toScreenX(atom.lon);
-        int cy = ctx.toScreenY(atom.lat);
+        Point2D.Double pt = ctx.toScreen(atom.lat, atom.lon);
+        int cx = (int) pt.x;
+        int cy = (int) pt.y;
 
         int size = Math.max(1, (int) Math.round(ctx.size * ctx.scale));
         int x = cx - size / 2;

@@ -12,8 +12,10 @@ If the user removes these files, opening a source produces an empty Mixel + a no
 | File | Used when |
 |---|---|
 | `video.vttp` | Default Mixel for VIDEO sources (mp4, mov) |
+| `image.vttp` | Default Mixel for IMAGE sources (jpg, png, …) |
 | `gpx.vttp` | Default Mixel for GPX sources |
 | `thumbnail-video.vttp` | Thumbnail rendering for VIDEO sources in project browser |
+| `thumbnail-image.vttp` | Thumbnail rendering for IMAGE sources in project browser |
 | `thumbnail-gpx.vttp` | Thumbnail rendering for GPX sources in project browser |
 
 File names match `SourceType.name().toLowerCase()` from the SDK

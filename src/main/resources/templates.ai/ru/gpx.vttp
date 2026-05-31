@@ -1,0 +1,2643 @@
+{
+  "visible": {
+    "value": true
+  },
+  "size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "figures": [],
+  "transparency": {
+    "value": 0
+  },
+  "layers": [
+    {
+      "data": {
+        "visible": {
+          "value": true
+        },
+        "figures": [
+          {
+            "type": "track",
+            "props": {
+              "Geo": {},
+              "line": {
+                "thickness": {
+                  "value": 5
+                },
+                "lineColor": {
+                  "a": 255,
+                  "r": 200,
+                  "b": 0,
+                  "g": 0
+                },
+                "style": {
+                  "value": 0
+                },
+                "dashPattern": {
+                  "value": ""
+                }
+              }
+            }
+          },
+          {
+            "type": "position",
+            "props": {
+              "Geo": {},
+              "fillColor": {
+                "a": 255,
+                "r": 0,
+                "b": 200,
+                "g": 0
+              },
+              "borderColor": {
+                "a": 255,
+                "r": 255,
+                "b": 255,
+                "g": 255
+              },
+              "size": {}
+            }
+          }
+        ],
+        "transparency": {
+          "value": 0
+        },
+        "layers": [],
+        "maket": {
+          "w": 1,
+          "x": 0,
+          "h": 1,
+          "y": 0,
+          "preset": "proportional"
+        },
+        "properties": {
+          "Geo": {},
+          "visible": {
+            "value": true
+          },
+          "geoZoom": {
+            "value": 14
+          },
+          "fitTrack": {
+            "value": true
+          },
+          "transparency": {
+            "value": 0
+          }
+        }
+      },
+      "name": "com.velitask.plagin.official.geoMap"
+    },
+    {
+      "data": {
+        "visible": {
+          "value": true
+        },
+        "figures": [],
+        "transparency": {
+          "value": 0
+        },
+        "layers": [
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.22395833333333334,
+                "x": 0.04513888888888889,
+                "h": 0.72,
+                "y": 0.15,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 4
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "◷",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 90,
+                  "color": {
+                    "a": 205,
+                    "r": 90,
+                    "g": 235,
+                    "b": 255
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.644,
+                "x": 0.2916666666666667,
+                "h": 0.30049856388759505,
+                "y": 0.13,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "ВРЕМЯ",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 24,
+                  "color": {
+                    "a": 255,
+                    "r": 90,
+                    "b": 255,
+                    "g": 235
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.6522656506063584,
+                "x": 0.2864583333333333,
+                "h": 0.4574424342105263,
+                "y": 0.41632401315789475,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "{curr}",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 47,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 1
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          }
+        ],
+        "maket": {
+          "w": 0.1849112426035503,
+          "x": 0.026000000000000002,
+          "h": 0.128,
+          "y": 0.04,
+          "preset": "proportional"
+        },
+        "properties": {
+          "fillColor": {
+            "a": 204,
+            "r": 4,
+            "b": 18,
+            "g": 11
+          },
+          "border": {
+            "thickness": {
+              "value": 3
+            },
+            "lineColor": {
+              "a": 255,
+              "r": 74,
+              "b": 255,
+              "g": 224
+            },
+            "style": {
+              "value": 0
+            },
+            "dashPattern": {
+              "value": ""
+            },
+            "cornerRadius": {
+              "value": 64
+            }
+          }
+        }
+      },
+      "name": "com.velitask.plagin.official.rectangle"
+    },
+    {
+      "data": {
+        "visible": {
+          "value": true
+        },
+        "figures": [],
+        "transparency": {
+          "value": 0
+        },
+        "layers": [
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.22395833333333334,
+                "x": 0.04513888888888889,
+                "h": 0.72,
+                "y": 0.15,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 4
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "🌡",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 82,
+                  "color": {
+                    "a": 205,
+                    "r": 90,
+                    "g": 235,
+                    "b": 255
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.644,
+                "x": 0.2916666666666667,
+                "h": 0.30049856388759505,
+                "y": 0.13,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "ТЕМПЕРАТУРА",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 19,
+                  "color": {
+                    "a": 255,
+                    "r": 90,
+                    "b": 255,
+                    "g": 235
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.38,
+                "x": 0.2864583333333333,
+                "h": 0.4574424342105263,
+                "y": 0.41632401315789475,
+                "preset": "proportional"
+              },
+              "properties": {
+                "Temperature": {},
+                "font": {
+                  "size": 47,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 1
+                },
+                "textAlign": {
+                  "value": 3
+                },
+                "measurement": {
+                  "system": {
+                    "value": 4
+                  },
+                  "format": {
+                    "value": 3
+                  },
+                  "temperature": {
+                    "value": 0
+                  }
+                },
+                "textTemplate": {
+                  "template": "{currNum}",
+                  "vars": {
+                    "currNum": "%.1f",
+                    "currUnit": "%s",
+                    "celsius": "%.1f"
+                  }
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.temperatureText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.25,
+                "x": 0.64,
+                "h": 0.23,
+                "y": 0.543,
+                "preset": "proportional"
+              },
+              "properties": {
+                "Temperature": {},
+                "font": {
+                  "size": 26,
+                  "color": {
+                    "a": 255,
+                    "r": 90,
+                    "b": 255,
+                    "g": 235
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                },
+                "textAlign": {
+                  "value": 3
+                },
+                "measurement": {
+                  "system": {
+                    "value": 4
+                  },
+                  "format": {
+                    "value": 3
+                  },
+                  "temperature": {
+                    "value": 0
+                  }
+                },
+                "textTemplate": {
+                  "template": "{currUnit}",
+                  "vars": {
+                    "currNum": "%.1f",
+                    "currUnit": "%s",
+                    "celsius": "%.1f"
+                  }
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.temperatureText"
+          }
+        ],
+        "maket": {
+          "w": 0.1849112426035503,
+          "x": 0.026000000000000002,
+          "h": 0.128,
+          "y": 0.2,
+          "preset": "proportional"
+        },
+        "properties": {
+          "fillColor": {
+            "a": 204,
+            "r": 4,
+            "b": 18,
+            "g": 11
+          },
+          "border": {
+            "thickness": {
+              "value": 3
+            },
+            "lineColor": {
+              "a": 255,
+              "r": 74,
+              "b": 255,
+              "g": 224
+            },
+            "style": {
+              "value": 0
+            },
+            "dashPattern": {
+              "value": ""
+            },
+            "cornerRadius": {
+              "value": 64
+            }
+          }
+        }
+      },
+      "name": "com.velitask.plagin.official.rectangle"
+    },
+    {
+      "data": {
+        "visible": {
+          "value": true
+        },
+        "figures": [],
+        "transparency": {
+          "value": 0
+        },
+        "layers": [
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.17,
+                "x": 0.04,
+                "h": 0.2978099480326652,
+                "y": 0.05452858203414999,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 4
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "⌖",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 96,
+                  "color": {
+                    "a": 205,
+                    "r": 90,
+                    "g": 235,
+                    "b": 255
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.58,
+                "x": 0.29417697686928457,
+                "h": 0.21980530989442834,
+                "y": 0.04638205510092906,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "ДИСТАНЦИЯ",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 22,
+                  "color": {
+                    "a": 255,
+                    "r": 90,
+                    "b": 255,
+                    "g": 235
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.335,
+                "x": 0.2874529316837009,
+                "h": 0.19069286572680316,
+                "y": 0.20857032188869082,
+                "preset": "proportional"
+              },
+              "properties": {
+                "valueText": {
+                  "size": 47,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 1
+                },
+                "unitFont": {
+                  "size": 24,
+                  "name": "Dialog",
+                  "style": 0
+                },
+                "textAlign": {
+                  "value": 0
+                },
+                "textTemplate": {
+                  "template": "{currNum}",
+                  "vars": {
+                    "fullNum": "%.1f",
+                    "currUnit": "%s",
+                    "fullUnit": "%s",
+                    "currNum": "%.1f"
+                  }
+                },
+                "Distance": {},
+                "measurement": {
+                  "system": {
+                    "value": 4
+                  },
+                  "distance": {
+                    "value": "KM"
+                  },
+                  "format": {
+                    "value": 2
+                  }
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.distanceText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.38333333333333336,
+                "x": 0.5266666666666666,
+                "h": 0.11332590942835935,
+                "y": 0.24891854995901025,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "КМ",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 22,
+                  "color": {
+                    "a": 255,
+                    "r": 90,
+                    "b": 255,
+                    "g": 235
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 54
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.8,
+                "x": 0.1,
+                "h": 0.02,
+                "y": 0.3873448835075688,
+                "preset": "proportional"
+              },
+              "properties": {
+                "line": {
+                  "thickness": {
+                    "value": 2
+                  },
+                  "lineColor": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "style": {
+                    "value": 0
+                  },
+                  "dashPattern": {
+                    "value": ""
+                  }
+                },
+                "direction": {
+                  "value": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.line"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.085,
+                "x": 0.073,
+                "h": 0.055,
+                "y": 0.472,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 4
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "⚑",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 23,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 70,
+                    "g": 185
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.26,
+                "x": 0.2,
+                "h": 0.045,
+                "y": 0.482,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "ВСЕГО",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 16,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 70,
+                    "g": 185
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.22,
+                "x": 0.55,
+                "h": 0.08,
+                "y": 0.467,
+                "preset": "proportional"
+              },
+              "properties": {
+                "valueText": {
+                  "size": 34,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 1
+                },
+                "unitFont": {
+                  "size": 17,
+                  "name": "Dialog",
+                  "style": 0
+                },
+                "textAlign": {
+                  "value": 3
+                },
+                "textTemplate": {
+                  "template": "{fullNum}",
+                  "vars": {
+                    "fullNum": "%.1f",
+                    "currUnit": "%s",
+                    "fullUnit": "%s",
+                    "currNum": "%.1f"
+                  }
+                },
+                "Distance": {},
+                "measurement": {
+                  "system": {
+                    "value": 4
+                  },
+                  "distance": {
+                    "value": "KM"
+                  },
+                  "format": {
+                    "value": 2
+                  }
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.distanceText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.05,
+                "x": 0.81,
+                "h": 0.045,
+                "y": 0.482,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "КМ",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 16,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 70,
+                    "g": 185
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 53
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.8,
+                "x": 0.1,
+                "h": 0.02,
+                "y": 0.6118062775401593,
+                "preset": "proportional"
+              },
+              "properties": {
+                "line": {
+                  "thickness": {
+                    "value": 2
+                  },
+                  "lineColor": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "style": {
+                    "value": 0
+                  },
+                  "dashPattern": {
+                    "value": ""
+                  }
+                },
+                "direction": {
+                  "value": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.line"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.085,
+                "x": 0.073,
+                "h": 0.055,
+                "y": 0.716,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 4
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "◴",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 23,
+                  "color": {
+                    "a": 255,
+                    "r": 120,
+                    "b": 160,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.35,
+                "x": 0.19333333333333333,
+                "h": 0.13212694877505568,
+                "y": 0.6920935412026726,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "В ДВИЖЕНИИ",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 16,
+                  "color": {
+                    "a": 255,
+                    "r": 120,
+                    "b": 160,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.445,
+                "x": 0.49,
+                "h": 0.08,
+                "y": 0.711,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "{passed}",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 34,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 1
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          }
+        ],
+        "maket": {
+          "w": 0.22189349112426035,
+          "x": 0.7521065088757396,
+          "h": 0.31369352585002325,
+          "y": 0.04,
+          "preset": "proportional"
+        },
+        "properties": {
+          "fillColor": {
+            "a": 204,
+            "r": 4,
+            "b": 18,
+            "g": 11
+          },
+          "border": {
+            "thickness": {
+              "value": 3
+            },
+            "lineColor": {
+              "a": 255,
+              "r": 74,
+              "b": 255,
+              "g": 224
+            },
+            "style": {
+              "value": 0
+            },
+            "dashPattern": {
+              "value": ""
+            },
+            "cornerRadius": {
+              "value": 64
+            }
+          }
+        }
+      },
+      "name": "com.velitask.plagin.official.rectangle"
+    },
+    {
+      "data": {
+        "visible": {
+          "value": true
+        },
+        "figures": [],
+        "transparency": {
+          "value": 0
+        },
+        "layers": [
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.23178761061946904,
+                "x": 0.04,
+                "h": 0.17653508771929824,
+                "y": 0.035,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 4
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "△",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 78,
+                  "color": {
+                    "a": 205,
+                    "r": 90,
+                    "g": 235,
+                    "b": 255
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.38,
+                "x": 0.29,
+                "h": 0.07,
+                "y": 0.045,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "ВЫСОТА",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 21,
+                  "color": {
+                    "a": 255,
+                    "r": 90,
+                    "b": 255,
+                    "g": 235
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.27,
+                "x": 0.29,
+                "h": 0.1,
+                "y": 0.105,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 5
+                },
+                "textTemplate": {
+                  "template": "{ele}",
+                  "vars": {
+                    "eleCurr": "%.1f",
+                    "length": "%.2f",
+                    "type": "%s",
+                    "down": "%.0f",
+                    "typec": "%s",
+                    "currUnit": "%s",
+                    "pc": "%.1f",
+                    "lengthUnit": "%s",
+                    "eleUnit": "%s",
+                    "up": "%.0f",
+                    "curr": "%.3f",
+                    "heightUnit": "%s",
+                    "height": "%.0f",
+                    "ele": "%.0f"
+                  }
+                },
+                "measurement": {
+                  "altitude": {
+                    "value": 0
+                  },
+                  "system": {
+                    "value": 0
+                  },
+                  "distance": {
+                    "value": "MM"
+                  },
+                  "format": {
+                    "value": 0
+                  }
+                },
+                "Slope": {},
+                "font": {
+                  "size": 50,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 1
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.slopeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.2,
+                "x": 0.61,
+                "h": 0.049355043212751686,
+                "y": 0.13596491228070176,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "М",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 21,
+                  "color": {
+                    "a": 255,
+                    "r": 90,
+                    "b": 255,
+                    "g": 235
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 53
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.8,
+                "x": 0.1,
+                "h": 0.020000000000000004,
+                "y": 0.22000000000000003,
+                "preset": "proportional"
+              },
+              "properties": {
+                "line": {
+                  "thickness": {
+                    "value": 2
+                  },
+                  "lineColor": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "style": {
+                    "value": 0
+                  },
+                  "dashPattern": {
+                    "value": ""
+                  }
+                },
+                "direction": {
+                  "value": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.line"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.085,
+                "x": 0.073,
+                "h": 0.05500000000000001,
+                "y": 0.272,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 4
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "↗",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 24,
+                  "color": {
+                    "a": 255,
+                    "r": 120,
+                    "b": 160,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.26,
+                "x": 0.2,
+                "h": 0.045,
+                "y": 0.282,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "НАБОР",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 16,
+                  "color": {
+                    "a": 255,
+                    "r": 120,
+                    "b": 160,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.22,
+                "x": 0.6,
+                "h": 0.08000000000000002,
+                "y": 0.257,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "textTemplate": {
+                  "template": "{up}",
+                  "vars": {
+                    "eleCurr": "%.0f",
+                    "length": "%.2f",
+                    "type": "%s",
+                    "down": "%.0f",
+                    "typec": "%s",
+                    "currUnit": "%s",
+                    "pc": "%.1f",
+                    "lengthUnit": "%s",
+                    "eleUnit": "%s",
+                    "up": "%.0f",
+                    "curr": "%.3f",
+                    "heightUnit": "%s",
+                    "height": "%.0f",
+                    "ele": "%.0f"
+                  }
+                },
+                "measurement": {
+                  "altitude": {
+                    "value": 0
+                  },
+                  "system": {
+                    "value": 0
+                  },
+                  "distance": {
+                    "value": "MM"
+                  },
+                  "format": {
+                    "value": 0
+                  }
+                },
+                "Slope": {},
+                "font": {
+                  "size": 34,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 1
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.slopeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.05,
+                "x": 0.81,
+                "h": 0.045,
+                "y": 0.282,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "М",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 16,
+                  "color": {
+                    "a": 255,
+                    "r": 120,
+                    "b": 160,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 53
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.8,
+                "x": 0.1,
+                "h": 0.020000000000000004,
+                "y": 0.34,
+                "preset": "proportional"
+              },
+              "properties": {
+                "line": {
+                  "thickness": {
+                    "value": 2
+                  },
+                  "lineColor": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "style": {
+                    "value": 0
+                  },
+                  "dashPattern": {
+                    "value": ""
+                  }
+                },
+                "direction": {
+                  "value": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.line"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.085,
+                "x": 0.073,
+                "h": 0.05500000000000001,
+                "y": 0.392,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 4
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "↘",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 24,
+                  "color": {
+                    "a": 255,
+                    "r": 120,
+                    "b": 255,
+                    "g": 190
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.26,
+                "x": 0.2,
+                "h": 0.045,
+                "y": 0.402,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "СПУСК",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 16,
+                  "color": {
+                    "a": 255,
+                    "r": 120,
+                    "b": 255,
+                    "g": 190
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.22,
+                "x": 0.6,
+                "h": 0.08000000000000002,
+                "y": 0.377,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "textTemplate": {
+                  "template": "{down}",
+                  "vars": {
+                    "eleCurr": "%.0f",
+                    "length": "%.2f",
+                    "type": "%s",
+                    "down": "%.0f",
+                    "typec": "%s",
+                    "currUnit": "%s",
+                    "pc": "%.1f",
+                    "lengthUnit": "%s",
+                    "eleUnit": "%s",
+                    "up": "%.0f",
+                    "curr": "%.3f",
+                    "heightUnit": "%s",
+                    "height": "%.0f",
+                    "ele": "%.0f"
+                  }
+                },
+                "measurement": {
+                  "altitude": {
+                    "value": 0
+                  },
+                  "system": {
+                    "value": 0
+                  },
+                  "distance": {
+                    "value": "MM"
+                  },
+                  "format": {
+                    "value": 0
+                  }
+                },
+                "Slope": {},
+                "font": {
+                  "size": 34,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 1
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.slopeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.05,
+                "x": 0.81,
+                "h": 0.045,
+                "y": 0.402,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "М",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 16,
+                  "color": {
+                    "a": 255,
+                    "r": 120,
+                    "b": 255,
+                    "g": 190
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 53
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.8,
+                "x": 0.1,
+                "h": 0.020000000000000004,
+                "y": 0.46,
+                "preset": "proportional"
+              },
+              "properties": {
+                "line": {
+                  "thickness": {
+                    "value": 2
+                  },
+                  "lineColor": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "style": {
+                    "value": 0
+                  },
+                  "dashPattern": {
+                    "value": ""
+                  }
+                },
+                "direction": {
+                  "value": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.line"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.085,
+                "x": 0.073,
+                "h": 0.05500000000000001,
+                "y": 0.512,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 4
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "%",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 21,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 70,
+                    "g": 185
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.26,
+                "x": 0.2,
+                "h": 0.045,
+                "y": 0.522,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "УКЛОН",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 16,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 70,
+                    "g": 185
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.22,
+                "x": 0.6,
+                "h": 0.08000000000000002,
+                "y": 0.497,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "textTemplate": {
+                  "template": "{pc}",
+                  "vars": {
+                    "eleCurr": "%.1f",
+                    "length": "%.2f",
+                    "type": "%s",
+                    "down": "%.0f",
+                    "typec": "%s",
+                    "currUnit": "%s",
+                    "pc": "%.1f",
+                    "lengthUnit": "%s",
+                    "eleUnit": "%s",
+                    "up": "%.0f",
+                    "curr": "%.3f",
+                    "heightUnit": "%s",
+                    "height": "%.0f",
+                    "ele": "%.0f"
+                  }
+                },
+                "measurement": {
+                  "altitude": {
+                    "value": 0
+                  },
+                  "system": {
+                    "value": 0
+                  },
+                  "distance": {
+                    "value": "MM"
+                  },
+                  "format": {
+                    "value": 0
+                  }
+                },
+                "Slope": {},
+                "font": {
+                  "size": 34,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "name": "Dialog",
+                  "style": 1
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.slopeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.05,
+                "x": 0.81,
+                "h": 0.045,
+                "y": 0.522,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "%",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 16,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 70,
+                    "g": 185
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 53
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.8,
+                "x": 0.1,
+                "h": 0.020000000000000004,
+                "y": 0.58,
+                "preset": "proportional"
+              },
+              "properties": {
+                "line": {
+                  "thickness": {
+                    "value": 2
+                  },
+                  "lineColor": {
+                    "a": 255,
+                    "r": 255,
+                    "b": 255,
+                    "g": 255
+                  },
+                  "style": {
+                    "value": 0
+                  },
+                  "dashPattern": {
+                    "value": ""
+                  }
+                },
+                "direction": {
+                  "value": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.line"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.44,
+                "x": 0.08,
+                "h": 0.035,
+                "y": 0.6099999999999999,
+                "preset": "proportional"
+              },
+              "properties": {
+                "textAlign": {
+                  "value": 3
+                },
+                "timeFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "timeZone": {
+                  "value": "Europe/Moscow"
+                },
+                "textTemplate": {
+                  "template": "ПРОФИЛЬ ВЫСОТ",
+                  "vars": {
+                    "left": "%s",
+                    "tzid": "%s",
+                    "passed": "%s",
+                    "curr": "%s"
+                  }
+                },
+                "durationFormat": {
+                  "value": "HH:mm:ss"
+                },
+                "font": {
+                  "size": 14,
+                  "color": {
+                    "a": 255,
+                    "r": 90,
+                    "b": 255,
+                    "g": 235
+                  },
+                  "name": "Dialog",
+                  "style": 0
+                }
+              }
+            },
+            "name": "com.velitask.plagin.official.timeText"
+          },
+          {
+            "data": {
+              "visible": {
+                "value": true
+              },
+              "figures": [],
+              "transparency": {
+                "value": 0
+              },
+              "layers": [],
+              "maket": {
+                "w": 0.84,
+                "x": 0.08,
+                "h": 0.32000000000000006,
+                "y": 0.65,
+                "preset": "proportional"
+              },
+              "properties": {
+                "geoZoom": {
+                  "value": 13
+                },
+                "line": {
+                  "thickness": {
+                    "value": 3
+                  },
+                  "lineColor": {
+                    "a": 255,
+                    "r": 90,
+                    "b": 255,
+                    "g": 235
+                  },
+                  "style": {
+                    "value": 0
+                  },
+                  "dashPattern": {
+                    "value": ""
+                  }
+                },
+                "EleChartScale": {
+                  "value": 13
+                },
+                "Slope": {}
+              }
+            },
+            "name": "com.velitask.plagin.official.slopeChart"
+          }
+        ],
+        "maket": {
+          "w": 0.1849112426035503,
+          "x": 0.026000000000000002,
+          "h": 0.6,
+          "y": 0.35999999999999993,
+          "preset": "proportional"
+        },
+        "properties": {
+          "fillColor": {
+            "a": 204,
+            "r": 4,
+            "b": 18,
+            "g": 11
+          },
+          "border": {
+            "thickness": {
+              "value": 3
+            },
+            "lineColor": {
+              "a": 255,
+              "r": 74,
+              "b": 255,
+              "g": 224
+            },
+            "style": {
+              "value": 0
+            },
+            "dashPattern": {
+              "value": ""
+            },
+            "cornerRadius": {
+              "value": 64
+            }
+          }
+        }
+      },
+      "name": "com.velitask.plagin.official.rectangle"
+    },
+    {
+      "data": {
+        "visible": {
+          "value": true
+        },
+        "figures": [],
+        "transparency": {
+          "value": 0
+        },
+        "layers": [],
+        "maket": {
+          "w": 0.22189349112426035,
+          "x": 0.7521065088757396,
+          "h": 0.35999999999999993,
+          "y": 0.6,
+          "preset": "proportional"
+        },
+        "properties": {
+          "arrowStrokeColor": {
+            "a": 245,
+            "r": 255,
+            "b": 235,
+            "g": 245
+          },
+          "tailColor": {
+            "a": 185,
+            "r": 72,
+            "b": 255,
+            "g": 220
+          },
+          "background": {
+            "color": {
+              "a": 255,
+              "r": 5,
+              "b": 28,
+              "g": 18
+            },
+            "transparency": {
+              "value": 26
+            }
+          },
+          "textTemplate": {
+            "template": "{curr}",
+            "vars": {
+              "curr": "%.0f"
+            }
+          },
+          "arrowFillColor": {
+            "a": 255,
+            "r": 255,
+            "b": 72,
+            "g": 138
+          },
+          "speedScale": {
+            "value": 1
+          },
+          "scaleColor": {
+            "a": 240,
+            "r": 220,
+            "b": 255,
+            "g": 245
+          },
+          "Distance": {},
+          "font": {
+            "size": 84,
+            "color": {
+              "a": 255,
+              "r": 255,
+              "b": 255,
+              "g": 255
+            },
+            "name": "Dialog",
+            "style": 1
+          }
+        }
+      },
+      "name": "com.velitask.plagin.official.speedometer"
+    }
+  ],
+  "positionInParent": {
+    "x": 0,
+    "y": 61.061947
+  }
+}
